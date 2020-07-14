@@ -1,0 +1,49 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Create Orders</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-12">
+        <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Customer Name" class="form-control" formControlName="customerName">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validation_messages.customerName">
+              <mat-error *ngIf="exampleForm.get('customerName').hasError(validation.type) && (exampleForm.get('customerName').dirty || exampleForm.get('customerName').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput type="number" min="0" max="100" placeholder="Order Number" class="form-control" formControlName="orderNumber">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validation_messages.orderNumber">
+              <mat-error *ngIf="exampleForm.get('orderNumber').hasError(validation.type) && (exampleForm.get('orderNumber').dirty || exampleForm.get('orderNumber').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput  placeholder="Order" class="form-control" formControlName="order">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validation_messages.order">
+              <mat-error *ngIf="exampleForm.get('order').hasError(validation.type) && (exampleForm.get('order').dirty || exampleForm.get('order').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="row submit-button-container">
+            <div class="col-md-4">
+              <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!exampleForm.valid">Create</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
